@@ -1,5 +1,5 @@
 const addMovieModal = document.getElementById('add-modal');
-// const addMovieMOdal = document.querySelector('#add-modal');
+// const addMovieModal = document.querySelector('#add-modal');
 
 // const addMovieModal = document.body.children[1];
 
@@ -11,21 +11,47 @@ const toggleBackdrop = () => {
 }
 
 const cancelAddMovieButton = addMovieModal.querySelector('.btn--passive');
+const confirmAddMovieButton = cancelAddMovieButton.nextElementSibling;
+const userInputs = addMovieModal.querySelectorAll('input');
+// const userInputs = addMovieModal.getElementByTagName('input');
+
+const movies =[];
 
 const toggleMovieModal = () => {
     addMovieModal.classList.toggle('visible');
     toggleBackdrop();
 };
 
-cancelAddMovie = () => {
+const cancelAddMovieHandler = () => {
     toggleMovieModal();
 }
+
+const addMovieHandler = () => {
+    const titleValue = userInputs[0].value;
+    const imgUrlValue = userInputs[1].value;
+    const ratingValue = userInputs[0].value;
+
+    if(
+        titleValue.trim() === '' ||
+        imgUrlValue.trim() === '' ||
+        ratingValue.trim() === '' ||
+        +ratingValue < 1 ||
+        +ratingValue > 5) {
+        alert('Please enter valid values including rating between 1 and 5');
+        return;
+    }
+
+    const newMovie = }
+
+    };
+};
 
 const backdropClickHandler = () => {
     toggleMovieModal();
 }
 
 startAddMovieButton.addEventListener('click', toggleMovieModal);
-backdrop.addEventListener('click', toggleMovieModal);
-cancelAddMovieButton.addEventListener('click', toggleMovieModal);
+backdrop.addEventListener('click', backdropClickHandler);
+cancelAddMovieButton.addEventListener('click', cancelAddMovieHandler);
+confirmAddMovieButton.addEventListener('click', addMovieHandler);
 
